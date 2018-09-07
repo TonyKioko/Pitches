@@ -16,7 +16,7 @@ class User(UserMixin,db.Model):
     # profile_pic_path = db.Column(db.String())
     # password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-    pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
+    # pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
     # comment = db.relationship("Comments", backref="user", lazy="dynamic")
 
     def __repr__(self):
@@ -49,17 +49,20 @@ class Pitches(db.Model):
     # image_path = db.Column(db.String)
     # movie_review = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
-    user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
+    # user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
     # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
+        
+    def __repr__(self):
+        return f'Pitches {self.body}'
 
-    # @classmethod
-    # def get_pitches(cls,id):
-    #     reviews = Pitches.query.filter_by(movie_id=id).all()
-    #     return reviews
+    @classmethod
+    def get_pitches(cls,id):
+        pitches = Pitches.query.filter_by(movie_id=id).all()
+        return pitches
 
 class Comments(db.Model):
    
@@ -69,8 +72,8 @@ class Comments(db.Model):
     id = db.Column(db. Integer, primary_key=True)
     # comment_id = db.Column(db.String(255))
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    # pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
 
     def save_comment(self):
        

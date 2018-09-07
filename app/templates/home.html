@@ -1,7 +1,7 @@
-
+<!-- 
 {% import 'macros.html' as macro%}
 
-{% extends 'base.html'%}
+{% extends 'base.html'%} -->
 
 
 
@@ -14,7 +14,7 @@
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
-        <title> Pitches </title>
+        <title> noPitches </title>
         {% endif %}
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,17 @@
         
     </head>
     <body>
-        {{ message }}
+        WElcome to the Pitch
+        <div class="container text-center">
+            
+            {% for pitch in pitches %}
+          <h2>{{pitch.body}}</h2>
+          <!-- <h2>{{pitch.body}}</h2> -->
+            
+            {% endfor %}
+            </div>
+
+        </div>
         
     </body>
 </html>

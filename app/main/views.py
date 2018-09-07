@@ -3,23 +3,25 @@ from . import main
 from flask_login import login_required,current_user
 from .forms import PitchesForm,CommentsForm
 from ..models import Pitches,User
+from .. import db
 
 # from ..requests import get_sources_by_cat,get_all_articles,get_headline_articles
 # from ..models import Source,Article
 
 
 @main.route('/')
-def index():
+def home():
 
     '''
     View root page function that returns the general news sources by category
     '''
     # message = "Hello World"
     title="Pitches"
+    pitches = Pitches.query.all()
 
     message= 'Welcome to the Pitches'
     # return "Hello, World"
-    return render_template('home.html',title=title,message=message)
+    return render_template('home.html',pitches=pitches,title=title,message=message)
 
 @main.route('/pitch/new',methods = ['GET','POST'])
 # @login_required
@@ -32,10 +34,10 @@ def new_pitch():
     if form.validate_on_submit():
         body = form.body.data
 
-        new_pitch = Pitches(body=body, user = current_user)
+        new_pitch = Pitches(body=body)
         new_pitch.save_pitch()
 
-        return redirect(url_for('home.html'))
+        return redirect(url_for('main.home'))
 
     return render_template('new_pitch.html', pitch_form = form)
 
