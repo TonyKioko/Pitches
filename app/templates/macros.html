@@ -1,0 +1,77 @@
+
+{% macro displaySourcesList(category) %}
+
+
+{% for news in category %}
+<div class="col-md-4 col-sm-4" style="height:200px;text-align:center;border-right:1px dashed grey;border-left:1px solid grey">
+    <h3><a class="text-center"href="{{news.url}}">{{ news.name}}</a></h3>
+    <p>{{news.description | truncate (100)}}</p>
+    <a class="btn btn-primary btn-block" href="/articles/{{news.id}}" style="font-size:16px;">View Articles</a>
+
+</div>
+
+    <!-- <a href="/articles/{{news.id}}">{{ news.id }}</a> -->
+
+
+{% endfor %}
+
+
+{% endmacro %}
+
+{% macro displayArticles(source) %}
+<h1 class="text-center">TOP HEADLINES</h1>
+<hr>
+<div class="container">
+
+</div>
+{% for article in source %}
+
+
+
+<div class="col-md-4" style="font-family: 'Crimson Text', serif;font-size:20px">
+        <div class="card" style="height:200px;">
+            <div class="card-header">
+                    <h3 class="list-group-item" style="font-weight:700;"><em>{{article.title}}</em></h3>
+            </div>
+            <a href="{{article.url}}" target="_blank">
+                <img class="card-img-top m-b-4" id="article-img" src="{{article.image}}" alt="Image of {{article.title}}" style="height:260px;width:100%;">
+        
+            </a>
+            <div class="card-body">
+                <div class="card-text">
+                        <ul class="list-group list-group-flush">
+                                <!-- <p class="list-group-item"><h3><em>{{article.title}}</em></h3></p> -->
+                                <p>By: {{article.author}}</p>
+                                <p class="list-group-item">Posted on {{article.date}}</p>
+                                <p class="card-link">
+                                        {{article.description|truncate(160)}}...
+                                            <span><a  href="{{article.url}}" target="_blank">Read More</a></span>
+                            
+                                </p>
+                                
+
+                        </ul>
+
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+</div>
+
+{% endfor %}
+
+
+{% endmacro %}

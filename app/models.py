@@ -16,7 +16,7 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     password_secure = db.Column(db.String(255))
-    pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
+    # pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
     # comment = db.relationship("Comments", backref="user", lazy="dynamic")
 
     def __repr__(self):
