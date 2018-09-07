@@ -30,9 +30,9 @@ def new_pitch():
     form = PitchesForm()
 
     if form.validate_on_submit():
-        content = form.pitch.data
+        body = form.body.data
 
-        new_pitch = Pitches(content=content, user = current_user)
+        new_pitch = Pitches(body=body, user = current_user)
         new_pitch.save_pitch()
 
         return redirect(url_for('home.html'))
