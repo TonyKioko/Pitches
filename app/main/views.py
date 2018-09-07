@@ -17,7 +17,8 @@ def home():
     '''
     # message = "Hello World"
     title="Pitches"
-    pitches = Pitches.query.all()
+    # pitches = Pitches.query.all()
+    pitches = Pitches.query.order_by('-id').all()
 
     message= 'Welcome to the Pitches'
     # return "Hello, World"
