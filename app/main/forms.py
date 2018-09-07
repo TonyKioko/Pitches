@@ -4,11 +4,10 @@ from wtforms.validators import Required
 
 class PitchesForm(FlaskForm):
 
-    title = StringField('Review title',validators=[Required()])
-    review = TextAreaField('Movie review')
+    pitch = TextAreaField('Pitch Now',validators = [Required()])
     submit = SubmitField('Submit')
-
+    
 class CommentsForm(FlaskForm):
-    bio = TextAreaField('Tell us about you.',validators = [Required()])
+    comment = TextAreaField('Comment on pitch',validators = [Required()])
     submit = SubmitField('Submit')
 
