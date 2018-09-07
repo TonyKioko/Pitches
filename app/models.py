@@ -13,10 +13,10 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
+    # profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     password_secure = db.Column(db.String(255))
-    # pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
+    pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
     # comment = db.relationship("Comments", backref="user", lazy="dynamic")
 
     def __repr__(self):
@@ -38,43 +38,18 @@ class User(UserMixin,db.Model):
     # def __repr__(self):
     #     return f'User {self.username}'
 
-class Category(db.Model):
-   
-    __tablename__ = 'categories'
-
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255))
-    description = db.Column(db.String(255))
-
-
-    def save_category(self):
-        '''
-        Function that saves a category
-        '''
-        db.session.add(self)
-        db.session.commit()
-
-    @classmethod
-    def get_categories(cls):
-        '''
-        Function that returns all the data from the categories after being queried
-        '''
-        categories = Category.query.all()
-        return categories
-
 
 class Pitches(db.Model):
 
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
-    category = db.Column(db.String)
+    # category = db.Column(db.String)
     body = db.Column(db.String)
-    image_path = db.Column(db.String)
-    movie_review = db.Column(db.String)
+    # image_path = db.Column(db.String)
+    # movie_review = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
-    # user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
+    user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
     # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save_pitch(self):
@@ -92,10 +67,10 @@ class Comments(db.Model):
 
 
     id = db.Column(db. Integer, primary_key=True)
-    comment_id = db.Column(db.String(255))
+    # comment_id = db.Column(db.String(255))
     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    # pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
 
     def save_comment(self):
        
@@ -107,6 +82,31 @@ class Comments(db.Model):
         comment = Comments.query.order_by(
             Comments.date_posted.desc()).filter_by(pitches_id=id).all()
         return comment
+
+# class Category(db.Model):
+   
+#     __tablename__ = 'categories'
+
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(255))
+#     description = db.Column(db.String(255))
+
+
+#     def save_category(self):
+#         '''
+#         Function that saves a category
+#         '''
+#         db.session.add(self)
+#         db.session.commit()
+
+#     @classmethod
+#     def get_categories(cls):
+#         '''
+#         Function that returns all the data from the categories after being queried
+#         '''
+#         categories = Category.query.all()
+#         return categories
 
 
 
