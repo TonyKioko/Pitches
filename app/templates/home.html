@@ -28,7 +28,7 @@
         <div class="container text-center">
             
             {% for pitch in pitches %}
-          <h2>{{pitch.body}}</h2>
+          <h2>{{pitch.body}} <span> posted on {{pitch.posted | datetimeformat}}</span></h2>
           <!-- <h2>{{pitch.body}}</h2> -->
             
             {% endfor %}

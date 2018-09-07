@@ -4,10 +4,14 @@ from flask_login import login_required,current_user
 from .forms import PitchesForm,CommentsForm
 from ..models import Pitches,User
 from .. import db
+from datetime import datetime
 
 # from ..requests import get_sources_by_cat,get_all_articles,get_headline_articles
 # from ..models import Source,Article
 
+@main.template_filter('datetimeformat')
+def datetimeformat(value,format='%B'):
+    return value.strftime(format)
 
 @main.route('/')
 def home():
