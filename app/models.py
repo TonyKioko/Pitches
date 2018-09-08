@@ -20,7 +20,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
     pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
-    # comment = db.relationship("Comments", backref="user", lazy="dynamic")
+    comment = db.relationship("Comments", backref="user", lazy="dynamic")
 
     @property
     def password(self):
@@ -35,7 +35,7 @@ class User(UserMixin,db.Model):
         return check_password_hash(self.pass_secure,password)
 
     def __repr__(self):
-        return f'User {self.username}. Email as {self.email}'
+        return f'User {self.username}'
     # pass_secure = db.Column(db.String(255))
 
 class Pitches(db.Model):
@@ -45,8 +45,9 @@ class Pitches(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     body = db.Column(db.String)
     category = db.Column(db.String(255))
-    # posted = db.Column(db.DateTime,default=datetime.utcnow)
+    # published = db.Column(db.DateTime,default=datetime.utcnow)
     user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
+    comment = db.relationship("Comments", backref="pitches", lazy="dynamic")
     # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save_pitch(self):
@@ -70,27 +71,26 @@ class Pitches(db.Model):
     def __repr__(self):
         return f'Pitches {self.body}'
 
-# class Comments(db.Model):
-#
-#     __tablename__ = 'comments'
-#
-#
-#     id = db.Column(db. Integer, primary_key=True)
-#     comment_id = db.Column(db.String(255))
-#     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-#     # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-#     # pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
-#
-#     def save_comment(self):
-#
-#         db.session.add(self)
-#         db.session.commit()
-#
-#     @classmethod
-#     def get_comments(self, id):
-#         comment = Comments.query.order_by(
-#             Comments.date_posted.desc()).filter_by(pitches_id=id).all()
-#         return comment
+class Comments(db.Model):
+
+    __tablename__ = 'comments'
+
+
+    id = db.Column(db. Integer, primary_key=True)
+    the_comment = db.Column(db.String(255))
+    # date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+
+    def save_comment(self):
+
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_comments(self, id):
+        comments = Comments.query.filter_by(pitch_id=id).all()
+        return comments
 
 # class Category(db.Model):
    
