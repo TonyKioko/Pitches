@@ -6,6 +6,11 @@ from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
 
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 class User(UserMixin,db.Model):
     __tablename__ = 'users'
 
@@ -13,15 +18,9 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255),index = True)
     email = db.Column(db.String(255),unique = True,index = True)
     bio = db.Column(db.String(255))
-    # profile_pic_path = db.Column(db.String())
-    # password_hash = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
-    # pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
+    pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
     # comment = db.relationship("Comments", backref="user", lazy="dynamic")
-
-    def __repr__(self):
-        return f'User {self.username}. Email as {self.email}'
-    # pass_secure = db.Column(db.String(255))
 
     @property
     def password(self):
@@ -35,56 +34,63 @@ class User(UserMixin,db.Model):
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
 
-    # def __repr__(self):
-    #     return f'User {self.username}'
-
+    def __repr__(self):
+        return f'User {self.username}. Email as {self.email}'
+    # pass_secure = db.Column(db.String(255))
 
 class Pitches(db.Model):
 
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
-    # category = db.Column(db.String)
     body = db.Column(db.String)
-    # image_path = db.Column(db.String)
-    # movie_review = db.Column(db.String)
-    posted = db.Column(db.DateTime,default=datetime.utcnow)
-    # user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
+    category = db.Column(db.String(255))
+    # posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
     # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
     def save_pitch(self):
         db.session.add(self)
         db.session.commit()
-        
-    def __repr__(self):
-        return f'Pitches {self.body}'
 
     @classmethod
     def get_pitches(cls,id):
-        pitches = Pitches.query.filter_by(movie_id=id).all()
+        pitches = Pitches.query.filter_by(id=id).all()
         return pitches
 
-class Comments(db.Model):
-   
-    __tablename__ = 'comments'
-
-
-    id = db.Column(db. Integer, primary_key=True)
-    # comment_id = db.Column(db.String(255))
-    date_posted = db.Column(db.DateTime, default=datetime.utcnow)
-    # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    # pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
-
-    def save_comment(self):
-       
-        db.session.add(self)
-        db.session.commit()
+    @classmethod
+    def get_category(cls, category):
+        category = Pitches.query.filter_by(category=category).order_by('-id').all()
+        return category
 
     @classmethod
-    def get_comments(self, id):
-        comment = Comments.query.order_by(
-            Comments.date_posted.desc()).filter_by(pitches_id=id).all()
-        return comment
+    def get_all_pitches(cls):
+        pitches = Pitches.query.order_by('-id').all()
+        return pitches
+    def __repr__(self):
+        return f'Pitches {self.body}'
+
+# class Comments(db.Model):
+#
+#     __tablename__ = 'comments'
+#
+#
+#     id = db.Column(db. Integer, primary_key=True)
+#     # comment_id = db.Column(db.String(255))
+#     date_posted = db.Column(db.DateTime, default=datetime.utcnow)
+#     # user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+#     # pitches_id = db.Column(db.Integer, db.ForeignKey("pitches.id"))
+#
+#     def save_comment(self):
+#
+#         db.session.add(self)
+#         db.session.commit()
+#
+#     @classmethod
+#     def get_comments(self, id):
+#         comment = Comments.query.order_by(
+#             Comments.date_posted.desc()).filter_by(pitches_id=id).all()
+#         return comment
 
 # class Category(db.Model):
    
@@ -114,6 +120,4 @@ class Comments(db.Model):
 
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+
