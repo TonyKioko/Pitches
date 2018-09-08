@@ -21,13 +21,18 @@ def home():
     '''
     # message = "Hello World"
     title="Pitches"
+    interview = Pitches.query.filter_by(category='Interview-Pitch').all()
+    product = Pitches.query.filter_by(category='Product-Pitch').all()
+    promotion = Pitches.query.filter_by(category='Promotion-Pitch').all()
+    business = Pitches.query.filter_by(category='Business-Pitch').all()
+    # promotion = Pitches.query.filter_by(category='Promotion-Pitch').all()
     # pitches = Pitches.query.all()
     # pitches = Pitches.query.order_by('-id').all()
-    pitches = Pitches.get_all_pitches()
+    # pitches = Pitches.get_all_pitches()
 
     message= 'Welcome to the Pitches'
     # return "Hello, World"
-    return render_template('home.html',pitches=pitches,title=title,message=message)
+    return render_template('home.html',title=title,message=message,interview=interview,product=product,promotion=promotion,business=business)
 
 @main.route('/pitch/new',methods = ['GET','POST'])
 @login_required
