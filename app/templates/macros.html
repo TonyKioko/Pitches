@@ -5,7 +5,8 @@
 
         <h3>{{pitch.user.username}}</h3>
         <h1>{{pitch.body}}</h1>
-        <p><a href="/comment/new">Comment</a></p>
+        <!--<p><a href="/comment/new">Comment</a></p>-->
+          <a href="/pitch/{{pitch.id}}"><h4>COMMENT</h4></a>
 
 
             </div>
@@ -14,7 +15,6 @@
 
 
 {% macro displayComments(comments_list)%}
-    <!--{% if all_comments%}-->
 
 
 
@@ -27,16 +27,13 @@
 
 
                     <div class="col-md-4">
-                        <a class="mr-2" href="#">{{comment.user.username}}</a>
-                        <p class="pitch-content">{{comment.the_comment}}</p>
+                        <a href="#">{{comment.user.username}}</a>
+                        <p>{{comment.the_comment}}</p>
 
                     </div>
 
         </div>
         {% endfor %}
-    <!--{% else %}-->
-
-    <!--{% endif %}-->
 {% endmacro %}
 
 <!-- Displaying comments macro -->
