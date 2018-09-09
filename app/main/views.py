@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for, abort
 from . import main
 from flask_login import login_required,current_user
 from .forms import PitchesForm,CommentsForm
-from ..models import Pitches,User
+from ..models import Pitches,Comments
 from .. import db
 from datetime import datetime
 
@@ -46,10 +46,29 @@ def new_pitch():
         body = form.body.data
         category = form.category.data
 
-        new_pitch = Pitches(body=body,category=category)
+        new_pitch = Pitches(body=body,category=category,user_id=current_user.id)
         new_pitch.save_pitch()
 
         return redirect(url_for('main.home'))
 
     return render_template('new_pitch.html', pitch_form = form)
+
+@main.route('/pitch/<int:id>',methods = ['GET', 'POST'])
+@login_required
+def comment(id):
+
+    comments_form = CommentsForm()
+    # pitch = Pitches.query.get(pitch_id)
+    pitches = Pitches.query.filter_by(id=id).first()
+
+    if comments_form.validate_on_submit():
+        comment = comments_form.comment.data
+
+        new_comment = Comments(comment=comment,pitches_id=pitches.id, user = current_user)
+        new_comment.save_comment()
+
+        return redirect(url_for('.comments', pitches_id=pitches.id))
+    comments_list = Comments.query.filter_by(pitches_id=pitches.id).all()
+
+    return render_template('comments.html', comments_form=comments_form,comments_list=comments_list)
 

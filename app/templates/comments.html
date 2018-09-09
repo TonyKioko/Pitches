@@ -1,0 +1,10 @@
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+<div class="col-md-6">
+        {{ wtf.quick_form(comments_form)}}
+    </div>
+
+<div class="col-md-6">
+         {{macro.displayComments(comments_list)}}
+    </div>

@@ -3,10 +3,40 @@
     <div class="container col-lg-4">
 
 
+        <h3>{{pitch.user.username}}</h3>
+        <h1>{{pitch.body}}</h1>
+        <a href="/pitch/{{pitches_id}}"><h4>COMMENT</h4></a>
 
-                         <h1>{{pitch.body}}</h1>
+
             </div>
     {% endfor %}
+{% endmacro %}
+
+
+{% macro displayComments(comments_list)%}
+    <!--{% if all_comments%}-->
+
+
+
+        {% for comment in comments_list %}
+
+
+
+        <div class="row">
+
+
+
+                    <div class="col-md-4">
+                        <a class="mr-2" href="#">{{comment.user.username}}</a>
+                        <p class="pitch-content">{{comment.the_comment}}</p>
+
+                    </div>
+
+        </div>
+        {% endfor %}
+    <!--{% else %}-->
+
+    <!--{% endif %}-->
 {% endmacro %}
 
 <!-- Displaying comments macro -->
