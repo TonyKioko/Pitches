@@ -64,7 +64,7 @@ def comment():
     if comments_form.validate_on_submit():
         comment = comments_form.comment.data
 
-        new_comment = Comments(the_comment=comment, user = current_user)
+        new_comment = Comments(the_comment=comment, user_id = current_user.id)
         new_comment.save_comment()
 
         return redirect(url_for('main.home'))
