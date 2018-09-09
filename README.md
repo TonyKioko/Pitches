@@ -1,8 +1,8 @@
 # One Minute Pitch
-#### News Highlight app created as an Independent Project on 31/08/2018
+#### News Highlight app created as an Independent Project on 07/09/2018
 #### Author: **Tony Kioko**
 ## Description
-News Highlight is a python flask web application that allows users to view various world news sources.
+One minute pitch is a python flask web application that allows users to view various pitches posted by others.
 The application helps users to:
 * See various news sources(listed alphabetically) and select the ones they prefer.
 * See all the news articles from that particular news source
