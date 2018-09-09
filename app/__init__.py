@@ -22,8 +22,9 @@ simple = SimpleMDE()
 
 
 
-# photos = UploadSet('photos',IMAGES)
+photos = UploadSet('photos',IMAGES)
 mail = Mail()
+
 def create_app(config_name):
 
     app = Flask(__name__)
@@ -45,7 +46,7 @@ def create_app(config_name):
     app.register_blueprint(auth_blueprint,url_prefix = '/authenticate')
 
     # configure UploadSet
-    # configure_uploads(app,photos)
+    configure_uploads(app,photos)
     mail.init_app(app)
     simple.init_app(app)
 

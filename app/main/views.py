@@ -1,9 +1,9 @@
 from flask import render_template,request,redirect,url_for, abort
 from . import main
 from flask_login import login_required,current_user
-from .forms import PitchesForm,CommentsForm
+from .forms import PitchesForm,CommentsForm,UpdateProfile
 from ..models import Pitches,Comments
-from .. import db
+from .. import photos, db
 from datetime import datetime
 
 # from ..requests import get_sources_by_cat,get_all_articles,get_headline_articles
