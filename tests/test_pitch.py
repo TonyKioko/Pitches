@@ -15,7 +15,7 @@ class PitchesTest(unittest.TestCase):
         '''
 
         self.user_Tony = User(username = 'Tony', password = 'potato', email = 't@g.com')
-        self.new_comment = Comments(the_comment = 'New Comment', pitches_id = 12345, user_id=self.user_Tony)
+        self.new_comment = Comments(the_comment = 'New Comment', pitches_id = 1, user_id=self.user_Tony)
         self.new_pitch = Pitches(id=1,body="New Pitch",category='Promotion-Pitch',user_id = self.user_Tony,comments = self.new_comment)
 
     def tearDown(self):
@@ -37,5 +37,5 @@ class PitchesTest(unittest.TestCase):
     def test_get_pitch_by_id(self):
 
         self.new_pitch.save_pitch()
-        got_pitches = Pitches.get_pitch(1)
-        self.assertTrue(len(got_pitches) == 1)
+        pitches = Pitches.get_pitches(1)
+        self.assertTrue(len(pitches) == 1)
