@@ -109,9 +109,30 @@ def comment(id):
         new_comment.save_comment()
 
         return redirect(url_for('main.home'))
+    # comments_list = Comments.query.filter_by(pitches_id=pitches.id).all()
+
+    return render_template('comments.html', comments_form=comments_form)
+
+@main.route('/pitch/<int:id>/comments',methods = ['GET', 'POST'])
+@login_required
+def com_list(id):
+
+    # comments_form = CommentsForm()
+    # pitch = Pitches.query.get(pitch_id)
+    pitches = Pitches.query.filter_by(id=id).first()
+
+    # if comments_form.validate_on_submit():
+    #     comment = comments_form.comment.data
+    #
+    #     new_comment = Comments(the_comment=comment,pitches_id=pitches.id, user_id = current_user.id)
+    #     new_comment.save_comment()
+
+        # return redirect(url_for('main.home'))
     comments_list = Comments.query.filter_by(pitches_id=pitches.id).all()
 
-    return render_template('comments.html', comments_form=comments_form,comments_list=comments_list)
+    return render_template('com_list.html',comments_list=comments_list)
+
+
 
 # @main.route('/comment/new',methods = ['GET', 'POST'])
 # @login_required

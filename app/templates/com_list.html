@@ -1,0 +1,16 @@
+ {% for comment in comments_list %}
+
+
+
+        <div class="row">
+
+
+
+                    <div class="col-md-4">
+                        <a href="#">{{comment.user.username}}</a>
+                        <p>{{comment.the_comment}}</p>
+
+                    </div>
+
+        </div>
+        {% endfor %}
