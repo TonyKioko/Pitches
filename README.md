@@ -4,14 +4,11 @@
 ## Description
 One minute pitch is a web application that allows users to view various pitches posted by others.
 The application helps users to:
+* Submit a pitch in any category.
 * See the pitches other people have posted.
 * To vote on the pitch they liked and give it a downvote or upvote.
 * To comment on the different pitches and leave feedback.
-* Submit a pitch in any category.
 * Receive a welcoming email once signed up.
-* Submit a pitch in any category.
-
-
 
 ## Setup/Installation Requirements.
 * Git clone https://github.com/TonyKioko/Pitches or download and unzip the repository from github.
