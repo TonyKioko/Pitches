@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-success bg-success navbar-fixed-top" role="navigation" style="position:fixed;height:80px;margin-bottom:30px;width:100%;font-family:'Crimson Text', serif;font-size:24px;">
+<div class="navbar navbar-success bg-success navbar-fixed-top" role="navigation" style="position:fixed;height:80px;margin-bottom:60px;width:100%;font-family:'Crimson Text', serif;font-size:24px;">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,11 +27,13 @@
                 <li><a href="/pitch/new">Pitch Now</a></li>
                 <!--<li style="color:red;padding:15px;">{{current_user.username}}</li>-->
                  <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-                <li><a href="{{url_for('auth.logout')}}">Sign out <span>{{current_user.username}}</span></a></li>
+                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
                 {% else %}
                 <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
                 {%endif%}
               </ul>
         </div>
+        <br>
+          <br>
 
     </div> 

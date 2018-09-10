@@ -8,19 +8,42 @@
             <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
 {% endblock %}
 {% block content %}
-<div class="container">
+<div class="container" style="font-family: 'Crimson Text', serif;font-size:20px">
 <div class="row">
-<div class="col-md-2"> </div>
-<div class="col-md-8">
+<div class="col-md-2">
+    <a   class="btn btn-primary"href="/" style="margin-top:20px;"><h1>Back</h1></a>
+</div>
+<div class="col-md-6">
 
     {{ wtf.quick_form(comments_form)}}
 </div>
-<div class="col-md-2"></div>
+
 </div>
+    <div id="comments">
+        <!--<div class="col-md-6 text-center" style="">-->
+
+             <!--<h1>Comments</h1>-->
+<!--{% for comment in comments_list %}-->
+
+<!--<ul>{{comment.the_comment}} &#45;&#45; by {{comment.user.username}}</ul>-->
+<!--&lt;!&ndash;<ul>{{comment.the_comment}}</ul>&ndash;&gt;-->
+<!--{%endfor%}-->
+            <div class="card text-center">
+  <h1 class="card-header">Comments</h1>
+                {% for comment in comments_list %}
+  <div class="card-body">
+    <h3 class="card-text">{{comment.the_comment}} -- by <a href="#">{{comment.user.username}}</a></h3>
+
+  </div>
+                {%endfor%}
 </div>
-{% for comment in comments_list %}
-<ul>{{comment.the_comment}}</ul>
-{%endfor%}
+
+
+        </div>
+
+
+    </div>
+
 
      <!--<h3> View Comments</h3>-->
 

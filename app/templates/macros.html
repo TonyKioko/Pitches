@@ -21,13 +21,19 @@
 {% endmacro %}
 {% macro displayCategory(category) %}
     {% for pitch in category %}
-    <div class="container col-md-6">
+    <div class="container">
+        <div class="row" style="width:200%;">
+            <col-md-12>
+                <h3>{{pitch.body}} ... Posted by <a href="#">{{pitch.user.username}}</a></h3>
+
+          <a href="/pitch/{{pitch.id}}" style=""><h4>Add Comment | View Comments</h4></a>
+
+            </col-md-12>
+
+        </div>
 
 
 
-        <h3>{{pitch.body}} ... Posted by <a href="#">{{pitch.user.username}}</a></h3>
-
-          <a href="/pitch/{{pitch.id}}" style=""><h4>Comment | View Comments</h4></a>
 
 
             </div>
