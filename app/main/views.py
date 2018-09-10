@@ -109,7 +109,7 @@ def comment(id):
         db.session.add(new_comment)
         db.session.commit()
 
-    comments_list = Comments.query.filter_by(pitches_id=id)
+    comments_list = Comments.query.filter_by(pitches_id=id).order_by("-id")
     print(comments_list)
 
     return render_template('comments.html', comments_form=comments_form,comments_list=comments_list)
