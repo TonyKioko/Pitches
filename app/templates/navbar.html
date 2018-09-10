@@ -8,15 +8,15 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" style="margin-top:-20px;"><h1>Pitches</h1></a>
+            <a class="navbar-brand" href="/" style="margin-top:-20px;"><h1>1MPitch</h1></a>
             <ul class="nav navbar-nav navbar-left">
                  <!-- <li><a href="/">Home</a></li> -->
                     <!--<li><a href="/topheadlines/en">Top Stories</a></li>-->
                  <!--{% if current_user.is_authenticated %}-->
-                    <li><a href="/#interview">Interview</a></li>
-                    <li><a href="/#product">Product</a></li>
-                    <li><a href="/#business">Business</a></li>
-                    <li><a href="/#promotion">Promotion</a></li>
+                    <!--<li><a href="/#interview">Interview</a></li>-->
+                    <!--<li><a href="/#product">Product</a></li>-->
+                    <!--<li><a href="/#business">Business</a></li>-->
+                    <!--<li><a href="/#promotion">Promotion</a></li>-->
                 <!--{% endif %}-->
               </ul>
             
@@ -25,9 +25,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if current_user.is_authenticated %}
                 <li><a href="/pitch/new">Pitch Now</a></li>
-                <li style="color:red;padding:15px;">{{current_user.username}}</li>
+                <!--<li style="color:red;padding:15px;">{{current_user.username}}</li>-->
                  <li><a href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
-                <li><a href="{{url_for('auth.logout')}}">Sign out</a></li>
+                <li><a href="{{url_for('auth.logout')}}">Sign out <span>{{current_user.username}}</span></a></li>
                 {% else %}
                 <li><a href="{{url_for('auth.login')}}">Sign in</a></li>
                 {%endif%}

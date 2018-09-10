@@ -14,7 +14,7 @@
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
-        <title> noPitches </title>
+        <title> No Pitches </title>
         {% endif %}
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,20 +27,26 @@
 
         <div class="categories">
             <!-- <a href="#trial" class="col-md-4 btn btn-info" data-toggle="collapse">Simple collapsible</a> -->
-            <ul class="nav nav-pills nav-justified">
+            <!--<ul class="nav nav-pills nav-justified">-->
+                    <!--<li class="active"><a data-toggle="pill" href="#interview">Interview</a></li>-->
+                    <!--<li><a data-toggle="pill" href="#product">product</a></li>-->
+                    <!--<li><a data-toggle="pill" href="#promotion">Promotion</a></li>-->
+                    <!--<li><a data-toggle="pill" href="#business">Business</a></li>-->
+                  <!--</ul>-->
+            <col-md-3 stlye="margin-top:200px;">
+                 <ul class="nav nav-pills nav-justified">
                     <li class="active"><a data-toggle="pill" href="#interview">Interview</a></li>
                     <li><a data-toggle="pill" href="#product">product</a></li>
                     <li><a data-toggle="pill" href="#promotion">Promotion</a></li>
                     <li><a data-toggle="pill" href="#business">Business</a></li>
                   </ul>
-            <div class="w3-sidebar w3-light-grey w3-bar-block" id="sidebar">
-         <p class="well">Categories</p>
-         <!--{{ macro.displayCategory(interview) }}-->
+            </col-md-3>
+
         </div>
 
 
                     <div id="interview" class="tab-pane fade in active">
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                                  {{macro.displayCategory(interview)}}
                             </div>
 
