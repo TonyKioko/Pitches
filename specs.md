@@ -6,4 +6,4 @@
 | Display pitches | **On the Home page** | Pitches posted by users displayed per category |
 | Post Pitch | **Login, Select category then Pitch** | Pitch created |
 | Comment on Pitch | **Login and Select comment on Pitch button**  | Comment created for that specific pitch |
-| Upvote or downvote | **Login and Select comment on Pitch button**  | Pitch upvotes or downvotes increases  |
+| Upvote or downvote | **click upvote/downvote**  | Pitch upvotes or downvotes increases  |
