@@ -24,53 +24,98 @@
         
     </head>
     <body>
-        WElcome to the Pitch
-         <div class="main-container">
-            <div class="main wrapper clearfix">
-        <div class="container" style="font-family: 'Crimson Text', serif;font-size:20px">
-            <div class="col-md-12" id="interview" style="margin-top:120px;">
-                <h1 class="text-center">General News</h1>
-                <hr>
-               {{macro.displayCategory(interview)}}
 
-            </div>
-            <hr>
-            <br>
-            <div class="col-md-12" id="product">
-                <br>
-                <div style="margin-top:100px">
-                        <h1 class="text-center">Sports News</h1>
+        <div class="categories">
+            <!-- <a href="#trial" class="col-md-4 btn btn-info" data-toggle="collapse">Simple collapsible</a> -->
+            <ul class="nav nav-pills nav-justified">
+                    <li class="><a data-toggle="pill" href="#interview">Interview</a></li>
+                    <li><a data-toggle="pill" href="#product">product</a></li>
+                    <li><a data-toggle="pill" href="#promotion">Promotion</a></li>
+                    <li><a data-toggle="pill" href="#business">Business</a></li>
+                  </ul>
+            <div class="w3-sidebar w3-light-grey w3-bar-block" id="sidebar">
+         <p class="well">Categories</p>
+         <!--{{ macro.displayCategory(interview) }}-->
+        </div>
+
+
+                    <div id="interview" class="tab-pane fade in active">
+                            <div class="col-md-4">
+                                 {{macro.displayCategory(interview)}}
+                            </div>
+
+                        </div>
+
+                    <div id="product" class="tab-pane fade">
+                         <div class="col-md-4">
+                            {{macro.displayCategory(product)}}
+                        </div>
+                    </div>
+                    <div id="promotion" class="tab-pane fade">
+                        <div class="col-md-4">
+                            {{macro.displayCategory(promotion)}}
+                        </div>
+                    </div>
+                    <div id="business" class="tab-pane fade">
+                            <div class="col-md-4">
+                                {{macro.displayCategory(business)}}
+                            </div>
+                    </div>
+                  </div>
+                  <!-- <div class="row">
+                        <h1>Comments</h1>
                         <hr>
-                       {{macro.displayCategory(product)}}
+                        {% if comments %}
+                            {{macro.displayComments(comments)}}
+                        {% endif %}
+                </div> -->
+    </div>
+         <!--<div class="main-container">-->
+            <!--<div class="main wrapper clearfix">-->
+        <!--<div class="container" style="font-family: 'Crimson Text', serif;font-size:20px">-->
+            <!--<div class="col-md-12" id="interview" style="margin-top:80px;">-->
+                <!--<h1 class="text-center">Interview</h1>-->
+                <!--<hr>-->
+               <!--{{macro.displayCategory(interview)}}-->
 
-                </div>
+            <!--</div>-->
+            <!--<hr>-->
+            <!--<br>-->
+            <!--<div class="col-md-12" id="product">-->
+                <!--<br>-->
+                <!--<div style="">-->
+                        <!--<h1 class="text-center">Product</h1>-->
+                        <!--<hr>-->
+                       <!--{{macro.displayCategory(product)}}-->
 
-            </div>
-            <hr>
-            <div class="col-md-12" id="promotion">
-              <div style="margin-top:100px">
-                <h1 class="text-center">Technology News</h1>
-                <hr>
-                {{macro.displayCategory(promotion)}}
-                  </div>
+                <!--</div>-->
 
-            </div>
-            <hr>
-            <div class="col-md-12" id="business">
-              <div style="margin-top:100px">
-                <h1 class="text-center">Entertainment News</h1>
-                <hr>
-                {{macro.displayCategory(business)}}
-                  </div>
+            <!--</div>-->
+            <!--<hr>-->
+            <!--<div class="col-md-12" id="promotion">-->
+              <!--<div style="">-->
+                <!--<h1 class="text-center">Promotion</h1>-->
+                <!--<hr>-->
+                <!--{{macro.displayCategory(promotion)}}-->
+                  <!--</div>-->
 
-            </div>
-            <hr>
-        </div>
+            <!--</div>-->
+            <!--<hr>-->
+            <!--<div class="col-md-12" id="business">-->
+              <!--<div style="">-->
+                <!--<h1 class="text-center">Business</h1>-->
+                <!--<hr>-->
+                <!--{{macro.displayCategory(business)}}-->
+                  <!--</div>-->
+
+            <!--</div>-->
+            <!--<hr>-->
+        <!--</div>-->
 
 
 
-            </div>
-        </div>
+            <!--</div>-->
+        <!--</div>-->
          <!--<div class="col-md-12" id="interview">-->
              <!--<p>The standard Lorem Ipsum passage, used since the 1500s-->
 <!--"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."-->

@@ -1,17 +1,20 @@
 # One Minute Pitch
-#### News Highlight app created as an Independent Project on 07/09/2018
+#### One MInute Pitch app created as an Independent Project on 07/09/2018
 #### Author: **Tony Kioko**
 ## Description
-One minute pitch is a python flask web application that allows users to view various pitches posted by others.
+One minute pitch is a web application that allows users to view various pitches posted by others.
 The application helps users to:
-* See various news sources(listed alphabetically) and select the ones they prefer.
-* See all the news articles from that particular news source
-* See the image description and time the news article was posted.
-* Click on an article and read it directly from the news source.
+* See the pitches other people have posted.
+* To vote on the pitch they liked and give it a downvote or upvote.
+* To comment on the different pitches and leave feedback.
+* Submit a pitch in any category.
+* Receive a welcoming email once signed up.
+* Submit a pitch in any category.
+
 
 
 ## Setup/Installation Requirements.
-* Git clone https://github.com/TonyKioko/NewsHighlight or download and unzip the repository from github.
+* Git clone https://github.com/TonyKioko/Pitches or download and unzip the repository from github.
 * Have python3.6 installed in your machine
 * Navigate into cloned file using the termianl.
 * Run python3.6 -m venv --without-pip virtual to create a virtual environment.
@@ -19,7 +22,6 @@ The application helps users to:
 * To run the app, type ./start.sh from your virtual environment on the terminal. In your favorite browser, open the link provided by the local host.
 
 ### Live Link ###
- https://newsnow11.herokuapp.com/
 
 ## Technologies used ##
 
