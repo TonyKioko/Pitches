@@ -10,6 +10,17 @@ The application helps users to:
 * To comment on the different pitches and leave feedback.
 * Receive a welcoming email once signed up.
 
+## Specifications
+| Behaviour | Input | Output |
+| :---------------- | :---------------: | ------------------: |
+| Create user account | **Click Sign Up button** | Form to capture user details|
+| Welcome email | **On sign Up** | sends welcome email to new user|
+| Display pitches | **On the Home page** | Pitches posted by users displayed per category |
+| Post Pitch | **Login, Select category then Pitch** | Pitch created |
+| Comment on Pitch | **Click comment on Pitch**  | Comment created for that specific pitch |
+| Upvote or downvote | **click upvote/downvote**  | Pitch upvotes or downvotes increases  |
+
+
 ## Setup/Installation Requirements.
 * Git clone https://github.com/TonyKioko/Pitches or download and unzip the repository from github.
 * Have python3.6 installed in your machine
