@@ -5,7 +5,7 @@ from wtforms.validators import Required
 class PitchesForm(FlaskForm):
     category = SelectField('Pitch Category',
                               choices=[('Select','Select Category'), ('Interview-Pitch', 'Interview Pitch'), ('Product-Pitch', 'Product Pitch'),
-                                       ('Promotion-Pitch', 'Promotion Pitch'), ('Business-Pitch', 'Business')], validators=[Required()])
+                                       ('Promotion-Pitch', 'Promotion Pitch'), ('Business-Pitch', 'Business Pitch')], validators=[Required()])
     body = TextAreaField('Pitch Now',validators = [Required()])
     submit = SubmitField('Submit')
     

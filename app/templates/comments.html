@@ -32,7 +32,7 @@
   <h1 class="card-header">Comments</h1>
                 {% for comment in comments_list %}
   <div class="card-body">
-    <h3 class="card-text">{{comment.the_comment}} -- by <a href="#">{{comment.user.username}}</a></h3>
+    <h3 class="card-text" style="height:60px;line-height:60px;background-color:#DCEFD9">{{comment.the_comment}} -- by <a href="#">{{comment.user.username}}</a></h3>
 
   </div>
                 {%endfor%}
@@ -45,9 +45,16 @@
     </div>
 
 
-     <!--<h3> View Comments</h3>-->
-
-         <!--{{macro.displayComments(comments_list)}}-->
-<!--</div>-->
+     
 
 {% endblock%}
+<!-- 
+<div class="col-md-6 panel text-center m-l-40">
+        <h1 class="panel-heading">Comments</h1>
+                      {% for comment in comments_list %}
+        <div class="panel-body">
+          <h3 class="panel-footer">{{comment.the_comment}} -- by <a href="#">{{comment.user.username}}</a></h3>
+      
+        </div>
+                      {%endfor%}
+      </div> -->
