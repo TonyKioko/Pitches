@@ -6,42 +6,50 @@
 
 
 {% block content %}
-<!doctype html>
+<!-- 
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <head> -->
+        <!-- <meta charset="utf-8"> -->
+        <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> -->
         {% if title %}
         <title> {{ title }}</title>
         {% else %}
         <title> No Pitches </title>
         {% endif %}
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    
         <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Old+Standard+TT|Roboto" rel="stylesheet">
 
 
         
-    </head>
-    <body>
+    <!-- </head> -->
+    <!-- <body style="height:auto;"> -->
         <div class="container">
-                <h1 class="text-center"> <a href="/pitch/new">USE THAT ONE MINUTE WISELY. <br> Submit your one minute pitches and other users will vote and comment on them.</a> 
+                <h1 class="text-center"> <a href="/pitch/new">USE THAT ONE MINUTE WISELY. <br> Submit your one minute pitches and other users will vote and comment on them.</a></h1>
         </div>
 
 
-</h1>
-        <div class="categories">
-            <!-- <a href="#trial" class="col-md-4 btn btn-info" data-toggle="collapse">Simple collapsible</a> -->
-            <ul class="nav nav-pills nav-justified">
-                    <li><a data-toggle="pill" href="#interview">Interview</a></li>
-                    <li><a data-toggle="pill" href="#product">Product</a></li>
-                    <li><a data-toggle="pill" href="#promotion">Promotion</a></li>
-                    <li><a data-toggle="pill" href="#business">Business</a></li>
-                  </ul>
 
+        <div class="container-fluid" style="margin:6px 28px;">
+                <div class="categories">
+            
+                        <ul class="nav nav-pills nav-fill nav-justified nav-success">
+
+                                <li class="nav-item">
+                                    <a data-toggle="pill" href="#interview">Interview</a></li>
+                                <li class="active nav-item">
+                                    <a data-toggle="pill" href="#product">Product</a></li>
+                                <li class="nav-item">
+                                    <a data-toggle="pill" href="#promotion">Promotion</a></li>
+                                <li class="nav-item">
+                                    <a data-toggle="pill" href="#business">Business</a></li>
+                              </ul>
+            
+                    </div>
         </div>
+        
 
-
+        <div class="tab-content" style="margin:10px;">
                     <div id="interview" class="tab-pane fade in active">
                             <div class="col-md-4" style="float:left">
                                  {{macro.displayCategory(interview)}}
@@ -51,6 +59,7 @@
 
                     <div id="product" class="tab-pane fade">
                          <div class="col-md-4" style="float:left">
+
                             {{macro.displayCategory(product)}}
                         </div>
                     </div>
@@ -65,133 +74,11 @@
                             </div>
                     </div>
                   </div>
-                  <!-- <div class="row">
-                        <h1>Comments</h1>
-                        <hr>
-                        {% if comments %}
-                            {{macro.displayComments(comments)}}
-                        {% endif %}
-                </div> -->
-    </div>
-         <!--<div class="main-container">-->
-            <!--<div class="main wrapper clearfix">-->
-        <!--<div class="container" style="font-family: 'Crimson Text', serif;font-size:20px">-->
-            <!--<div class="col-md-12" id="interview" style="margin-top:80px;">-->
-                <!--<h1 class="text-center">Interview</h1>-->
-                <!--<hr>-->
-               <!--{{macro.displayCategory(interview)}}-->
-
-            <!--</div>-->
-            <!--<hr>-->
-            <!--<br>-->
-            <!--<div class="col-md-12" id="product">-->
-                <!--<br>-->
-                <!--<div style="">-->
-                        <!--<h1 class="text-center">Product</h1>-->
-                        <!--<hr>-->
-                       <!--{{macro.displayCategory(product)}}-->
-
-                <!--</div>-->
-
-            <!--</div>-->
-            <!--<hr>-->
-            <!--<div class="col-md-12" id="promotion">-->
-              <!--<div style="">-->
-                <!--<h1 class="text-center">Promotion</h1>-->
-                <!--<hr>-->
-                <!--{{macro.displayCategory(promotion)}}-->
-                  <!--</div>-->
-
-            <!--</div>-->
-            <!--<hr>-->
-            <!--<div class="col-md-12" id="business">-->
-              <!--<div style="">-->
-                <!--<h1 class="text-center">Business</h1>-->
-                <!--<hr>-->
-                <!--{{macro.displayCategory(business)}}-->
-                  <!--</div>-->
-
-            <!--</div>-->
-            <!--<hr>-->
-        <!--</div>-->
-
-
-
-            <!--</div>-->
-        <!--</div>-->
-         <!--<div class="col-md-12" id="interview">-->
-             <!--<p>The standard Lorem Ipsum passage, used since the 1500s-->
-<!--"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."-->
-
-<!--</p>-->
-                <!--<h1 class="text-center">Interview Pitches</h1>-->
-                <!--<hr>-->
-                 <!--{{macro.displayCategory(interview)}}-->
-
-            <!--</div>-->
-
-         <!--<div class="col-md-12" id="product">-->
-             <!--The standard Lorem Ipsum passage, used since the 1500s-->
-<!--"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."-->
-
-
-                <!--<h1 class="text-center">Product Pitches</h1>-->
-                <!--<hr>-->
-                 <!--{{macro.displayCategory(product)}}-->
-
-            <!--</div>-->
-        <!--<div class="col-md-12" id="promotion">-->
-            <!--The standard Lorem Ipsum passage, used since the 1500s-->
-<!--"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."-->
-
-
-                <!--<h1 class="text-center">Promotion Pitches</h1>-->
-                <!--<hr>-->
-                 <!--{{macro.displayCategory(promotion)}}-->
-
-            <!--</div>-->
-        <!--<div class="col-md-12" id="business">-->
-            <!--The standard Lorem Ipsum passage, used since the 1500s-->
-<!--"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."-->
-
-
-                <!--<h1 class="text-center">BuSINESS Pitches</h1>-->
-                <!--<hr>-->
-                 <!--{{macro.displayCategory(business)}}-->
-
-            <!--</div>-->
-
-        <!--<div id="interview">-->
-                        <!--<div class="row">-->
-                            <!--{{macro.displayCategory(interview)}}-->
-                        <!--</div>-->
-        <!--</div>-->
-        <!--<div id="product">-->
-                        <!--<div class="row">-->
-                            <!--{{macro.displayCategory(product)}}-->
-                        <!--</div>-->
-        <!--</div>-->
-        <!--<div id="promotion">-->
-                        <!--<div class="row">-->
-                            <!--{{macro.displayCategory(promotion)}}-->
-                        <!--</div>-->
-        <!--</div>-->
-        <!--<div id="business">-->
-                        <!--<div class="row">-->
-                            <!--{{macro.displayCategory(business)}}-->
-                        <!--</div>-->
-        <!--</div>-->
-        <!--<div class="container text-center">-->
-            <!---->
-            <!--{% for pitch in pitches %}-->
-          <!--<h2>{{pitch.body}} <span> posted on {{pitch.posted}}</span></h2>-->
-          <!--&lt;!&ndash; <h2>{{pitch.body}}</h2> &ndash;&gt;-->
-            <!---->
-            <!--{% endfor %}-->
-            <!--</div>-->
-
-        <!--</div>-->
-        <!---->
-    </body>
-</html>
+                 
+         
+      
+                
+    
+    <!-- </body> -->
+<!-- </html> -->
 {% endblock %}

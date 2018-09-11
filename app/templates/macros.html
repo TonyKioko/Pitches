@@ -19,7 +19,8 @@
         </div>
         {% endfor %}
 {% endmacro %}
-{% macro displayCategory(category) %}
+
+<!-- {% macro displayCategory(category) %}
     {% for pitch in category %}
     <div class="container">
         <div class="row" style="width:200%;">
@@ -38,18 +39,31 @@
 
             </div>
     {% endfor %}
-{% endmacro %}
+{% endmacro %} -->
+
+{% macro displayCategory(category) %}
+    {% for pitch in category %}
+   
+<div class="container col-md-12">
 
 
+        <div class="panel panel-success" style="height:100%;float:left;width:100%;margin-bottom:10%;margin-left:0%;border:3px double #0E5582;">
+            
+            <div class="panel-body">
+                <p>{{ pitch.body}}</p>
+               
+                 <!-- <p><i>Posted At: </i><b>{{pitch.posted}}</b></p> -->
+            </div>
+            <div class="panel-footer">
+                    <h4><i>Posted By : </i><b>{{pitch.user.username}}</b></h4>
 
+            </div>
+            <div class="panel-footer">
+                    <a href="/pitch/{{pitch.id}}" style=""><h4>Add Comment | View Comments</h4></a>
 
-<!-- Displaying comments macro -->
-<!--{% macro displayComments(comment_list) %}-->
-    <!--{% for comment in comment_list %}-->
-    <!--<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 comment-card">-->
-        <!--<p> {{ comment.body}} </p>-->
-        <!--<p> {{ comment.vote}}</p>-->
-        <!--<p><i>{{ comment.author }}</i></p>-->
-    <!--</div>-->
-    <!--{% endfor %}-->
-<!--{% endmacro %}-->
+            </div>
+        </div>
+    </div> 
+    {% endfor %}
+    {% endmacro %}
+    
