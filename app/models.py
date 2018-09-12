@@ -20,7 +20,9 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
+    #creating relationship between users and pitches,One User can have many pitches
     pitches = db.relationship("Pitches", backref="user", lazy="dynamic")
+    #creating relationship between users and comments,One User can have many comments
     comments = db.relationship("Comments", backref="user", lazy="dynamic")
 
     @property
@@ -47,6 +49,7 @@ class Pitches(db.Model):
     body = db.Column(db.String)
     category = db.Column(db.String(255))
     published = db.Column(db.DateTime,default=datetime.utcnow)
+    # Foreign key from users table to link pitches and users
     user_id=db.Column(db.Integer,db.ForeignKey("users.id"))
     comments = db.relationship("Comments", backref="pitches", lazy="dynamic")
     # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
