@@ -25,10 +25,11 @@ def home():
     product = Pitches.query.filter_by(category='Product-Pitch').all()
     promotion = Pitches.query.filter_by(category='Promotion-Pitch').all()
     business = Pitches.query.filter_by(category='Business-Pitch').all()
+    # pitches = Pitches.get_all_pitches()
     # promotion = Pitches.query.filter_by(category='Promotion-Pitch').all()
     # pitches = Pitches.query.all()
     # pitches = Pitches.query.order_by('-id').all()
-    # pitches = Pitches.get_all_pitches()
+    
 
     message= 'Welcome to the Pitches'
     # return "Hello, World"

@@ -36,7 +36,8 @@ class ProdConfig(Config):
 class TestConfig(Config):
 
    
-    pass
+    # pass
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://tony:1234@localhost/minpitch_test'
 
 class DevConfig(Config):
     '''
@@ -50,6 +51,7 @@ class DevConfig(Config):
     DEBUG = True
 
 config_options = {
+    'development':DevConfig,
     'production':ProdConfig,
     'test': TestConfig
 }
