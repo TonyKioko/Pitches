@@ -3,6 +3,21 @@ from app.models import Pitches, User,Comments
 from app import db
 
 
+class UserModelTest(unittest.TestCase):
+
+    def setUp(self):
+        self.new_user = User(password = 'banana')
+
+    def test_password_setter(self):
+        self.assertTrue(self.new_user.pass_secure is not None)
+
+    def test_no_access_password(self):
+        with self.assertRaises(AttributeError):
+            self.new_user.password
+
+    def test_password_verification(self):
+        self.assertTrue(self.new_user.verify_password('banana'))
+
 
 class PitchesTest(unittest.TestCase):
     '''
@@ -19,17 +34,17 @@ class PitchesTest(unittest.TestCase):
         self.new_pitch = Pitches(id=1,body="New Pitch",category='Promotion-Pitch',published=10/9/18,user_id = 1,comments = self.new_comment)
 
     def tearDown(self):
-        db.session.delete(self)
-        # User.query.delete()
+        # db.session.delete(self)
+        User.query.delete()
+        Comments.query.delete()
         Pitches.query.delete()
     
     def test_instance(self):
         '''
-        Test case to check if new_comment is an instance of Comment
+        Test case to check if new_user,new_comment and new_pitch are instances of of parent classes
         '''
-
-        self.assertTrue( isinstance( self.new_comment, Comments) )
         self.assertTrue( isinstance( self.new_user, User) )
+        self.assertTrue( isinstance( self.new_comment, Comments) )
         self.assertTrue( isinstance( self.new_pitch, Pitches) )
     
 
@@ -63,6 +78,8 @@ class TestComment(unittest.TestCase):
 
 	def test_check_comment_instance_variables(self):
 		
+        # self.assertEquals(self.comment.pitches_id, 1)
 		self.assertEquals(self.comment.the_comment,"new comment")
 		self.assertEquals(self.comment.user_id, 1)
+        
     
